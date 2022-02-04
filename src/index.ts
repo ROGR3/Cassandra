@@ -20,4 +20,8 @@ function createWindow(): void {
   })
 }
 
-app.on("ready", createWindow)
+app.on("ready", () => {
+  //@ts-expect-error
+  app.allowRendererProcessReuse = true
+  createWindow()
+})
