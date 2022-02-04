@@ -3,10 +3,7 @@ const shortcuts = JSON.parse(lepik.readShortcuts())
 
 const SUBMIT_KEY = settings.submitKey
 
-
-
 let clickedKeys: string = ""
-
 
 lepik.keyRelease((e: string) => {
   clickedKeys += e;

@@ -1,4 +1,14 @@
-const lepik = {
+interface Lepik {
+  keyTap: (key: string) => void
+  keyRelease: (cb: Function) => void
+  replaceWord: (text: string) => void
+  readSettings: () => string
+  readShortcuts: () => string
+  writeSettings: (text: string) => void
+  writeShortcuts: (text: string) => void
+}
+
+const lepik: Lepik = {
   readShortcuts,
   replaceWord,
   keyTap,
