@@ -10,7 +10,11 @@ function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: __dirname + '/../assets/logo.png',
+    autoHideMenuBar: true,
     webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
       preload: __dirname + '/preload/preload.js'
     }
   })
@@ -19,9 +23,9 @@ function createWindow(): void {
     mainWindow?.show()
   })
 }
-
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
+});
 app.on("ready", () => {
-  //@ts-expect-error
-  app.allowRendererProcessReuse = true
   createWindow()
 })

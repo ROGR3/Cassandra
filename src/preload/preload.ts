@@ -1,7 +1,7 @@
 import { ipcRenderer, contextBridge } from "electron";
 import { readFileSync, writeFileSync } from "fs";
 const lepik = require("lepikjs")
-contextBridge.exposeInMainWorld("api", {
+contextBridge.exposeInMainWorld("lepikApi", {
   keyRelease: (cb: Function): void => {
     lepik.on("keyRelease", cb)
   },
@@ -12,6 +12,9 @@ contextBridge.exposeInMainWorld("api", {
     lepik.keyTap("ctrl+backspace")
     lepik.write(text, 0)
   },
+
+});
+contextBridge.exposeInMainWorld("fsApi", {
   readShortcuts: (): string => {
     return readFileSync(__dirname + "../../../database/shortcuts.json", "utf8")
   },
@@ -24,4 +27,4 @@ contextBridge.exposeInMainWorld("api", {
   writeSettings: (text: string): void => {
     writeFileSync(__dirname + "../../../database/settungs.json", text, "utf8")
   }
-});
+})
