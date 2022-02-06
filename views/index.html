@@ -12,16 +12,18 @@
   <script defer src="../dist/renderer/modules/fs.js"></script>
   <script defer src="../dist/renderer/main.js"></script>
   <script defer src="../dist/renderer/dom.js"></script>
+  <base target="_blank">
 </head>
 
 <body>
+  <div class="settingsIcon">
+    <i class="fa fa-bars" aria-hidden="true" id="settings" onclick="openSettings()"></i>
+  </div>
   <div id="myDiv" class="header">
     <div id=" "></div>
-    <div class="settingsIcon">
-      <i class="fa fa-bars" aria-hidden="true" id="settings" onclick="openSettings()"></i>
-    </div>
+
     <h1>Cassandra</h1>
-    <h5 class="helperText"></h5>
+    <h5 class="helperText" style="opacity: 0;"></h5>
     <div class="form__group field">
       <input type="input" class="form__field " placeholder="Key..." name="key" id='key' />
       <label for="key" class="form__label">Key</label>
@@ -33,7 +35,7 @@
   </div>
   <ul id="list">
   </ul>
-  <div id="settingsDiv">
+  <div id="settingsDiv" style="display: none;">
     <div class="logo">
     </div>
     <div class="splitter">
@@ -41,7 +43,7 @@
     </div>
     <div class="row">
       <p>Dark theme:
-      <div class='toggle' id='switch' onclick="toggleClass(this)">
+      <div class='toggle themeSwitcher' id='switch' onclick="toggleClass(this)">
         <div class='toggle-text-off'>OFF</div>
         <div class='glow-comp'></div>
         <div class='toggle-button'></div>
@@ -55,7 +57,7 @@
     <p>Submit Hotkey: <span class="submitHotkeySpan">Space</span></p>
     <div class="row">
       <p>Safe mode:
-      <div class='toggle' id='switch' onclick="toggleClass(this)">
+      <div class='toggle safeModeSwitcher' id='switch' onclick="toggleClass(this)">
         <div class='toggle-text-off'>OFF</div>
         <div class='glow-comp'></div>
         <div class='toggle-button'></div>

@@ -9,7 +9,7 @@ const fs: Fs = {
   readSettings,
   readShortcuts,
   writeSettings,
-  writeShortcuts
+  writeShortcuts,
 }
 
 function writeSettings(text: string): void {
@@ -31,3 +31,4 @@ function readSettings(): string {
   //@ts-expect-error
   return window.fsApi.readSettings()
 }
+

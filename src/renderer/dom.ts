@@ -1,10 +1,10 @@
 let keyInp = <HTMLInputElement>document.getElementById("key");
 let valInp = <HTMLInputElement>document.getElementById("value");
-let helperText = <HTMLElement>document.querySelector(".helperText");
-let settingsDiv = <HTMLElement>document.getElementById("settingsDiv");
-let list = <HTMLElement>document.getElementById("list");
+let helperText = <HTMLHeadingElement>document.querySelector(".helperText");
+let settingsDiv = <HTMLDivElement>document.getElementById("settingsDiv");
+let list = <HTMLUListElement>document.getElementById("list");
 let inputs = <NodeListOf<HTMLElement>>document.querySelectorAll(".field");
-
+let root = <HTMLElement>document.querySelector(":root");
 const evenColor = "rgba(255,255,255,0.1)";
 const oddColor = "rgba(0,0,0,0.1)";
 
@@ -125,13 +125,70 @@ function generateLis(): void {
 }
 
 function main(): void {
-  helperText.style.opacity = "0";
+
   generateLis()
+  handleSwitchesOnStart()
+  changeTheme(settings.darkMode)
 }
 
 window.onload = main
-console.log(settingsDiv.style.display = "none")
 
 function toggleClass(el: HTMLElement): void {
   el.classList.toggle('toggle-on');
+  if (el.className.includes("themeSwitcher")) {
+    settings.darkMode = !settings.darkMode;
+    fs.writeSettings(JSON.stringify(settings));
+  } else if (el.className.includes("safeModeSwitcher")) {
+    settings.safeMode = !settings.safeMode;
+    fs.writeSettings(JSON.stringify(settings));
+  }
+  changeTheme(settings.darkMode)
+
+}
+
+function handleSwitchesOnStart() {
+  let themeSwitcher = <HTMLElement>document.querySelector(".themeSwitcher");
+  settings.darkMode ? themeSwitcher.classList.add("toggle-on") : themeSwitcher.classList.remove("toggle-on")
+  let safeModeSwitcher = <HTMLElement>document.querySelector(".safeModeSwitcher");
+  settings.safeMode ? safeModeSwitcher.classList.add("toggle-on") : safeModeSwitcher.classList.remove("toggle-on")
+}
+
+function changeTheme(isDarkMode: boolean): void {
+  if (isDarkMode) {
+    for (let theme in THEMES.dark) root.style.setProperty(`--${theme}`, THEMES.dark[theme]);
+  } else {
+    for (let theme in THEMES.light) root.style.setProperty(`--${theme}`, THEMES.light[theme]);
+  }
+}
+
+interface Theme {
+  primary: string,
+  secondary: string,
+  grey: string,
+  white: string,
+  bg: string,
+  bgDark: string
+}
+
+interface Themes {
+  dark: Theme,
+  light: Theme,
+}
+
+const THEMES: { [key: string]: any } = {
+  dark: {
+    "primary": "#ff8d00",
+    "secondary": "#ff5e00",
+    "grey": "#9b9b9b",
+    "white": "#cacaca",
+    "bg": "#2e2c2a",
+    "bgDark": "#252423"
+  }, light: {
+    "primary": "#e72d03",
+    "secondary": "#992929",
+    "grey": "#999",
+    "white": "#222",
+    "bg": "#ededed",
+    "bgDark": "#fff"
+  }
 }

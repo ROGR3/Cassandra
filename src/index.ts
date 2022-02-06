@@ -22,6 +22,10 @@ function createWindow(): void {
   mainWindow.on('ready-to-show', () => {
     mainWindow?.show()
   })
+  mainWindow.webContents.on('new-window', function (e, url) {
+    e.preventDefault();
+    require('electron').shell.openExternal(url);
+  });
 }
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit();

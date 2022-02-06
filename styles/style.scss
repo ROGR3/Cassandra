@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-$white: rgb(202, 202, 202);
-$bg: #2e2c2a;
-$black: rgb(29, 29, 29);
-$primary : #ff8d00;
-$secondary : #ff5e00;
-$gray: #9b9b9b;
+
 
 * {
   padding: 0;
@@ -16,7 +11,7 @@ body {
   font-family: 'Genos', sans-serif;
   font-size: 2rem;
   line-height: 1.5;
-  background-color: $bg;
+  background-color: var(--bg);
   height: fit-content;
 }
 
@@ -30,7 +25,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $gray;
+  background: var(--grey);
   border-radius: 10px;
 }
 
@@ -42,7 +37,7 @@ body {
   position: fixed;
   width: 100%;
   z-index: 2;
-  background: #2e2c2a;
+  background: var(--bg);
   top: 0;
   height: 20rem;
 
@@ -66,19 +61,6 @@ body {
     z-index: -1;
   }
 
-  .settingsIcon {
-
-    position: absolute;
-    right: 2rem;
-
-    i {
-      font-size: 1.7rem;
-      color: $white;
-      margin-right: 1rem;
-      cursor: pointer;
-    }
-  }
-
   .form__group {
     position: relative;
     padding: 15px 0 0;
@@ -91,10 +73,10 @@ body {
     font-family: inherit;
     width: 100%;
     border: 0;
-    border-bottom: 2px solid $gray;
+    border-bottom: 2px solid var(--grey);
     outline: 0;
     font-size: 1.3rem;
-    color: $white;
+    color: var(--white);
     padding: 7px 0;
     background: transparent;
     transition: border-color 0.2s;
@@ -116,7 +98,7 @@ body {
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: $gray;
+    color: var(--grey);
   }
 
   .form__field:focus {
@@ -126,14 +108,14 @@ body {
       display: block;
       transition: 0.2s;
       font-size: 1rem;
-      color: $primary;
+      color: var(--primary);
       font-weight: 700;
     }
 
     padding-bottom: 6px;
     font-weight: 700;
     border-width: 3px;
-    border-image: linear-gradient(to right, $primary, $secondary);
+    border-image: linear-gradient(to right, var(--primary), var(--secondary));
     border-image-slice: 1;
   }
 
@@ -150,7 +132,7 @@ body {
 
   h1 {
     line-height: 1;
-    color: $primary;
+    color: var(--primary);
   }
 
   h5 {
@@ -169,26 +151,27 @@ body {
     font-size: 1.7rem;
     transition: 0.2s;
     position: relative;
-    color: $white;
+    color: var(--white);
 
     i {
       float: right;
       cursor: pointer;
       transition: .2s;
       font-size: 1.1rem;
-      margin: 0.5rem 3px 0;
+      margin: 0.4rem 3px 0;
     }
 
     .wierdIcon {
-      color: $primary;
+      color: var(--primary);
       font-size: 1.8rem;
+      margin-top: .5rem;
     }
 
     .icon {
-      border: 1px solid $white;
+      border: 1px solid var(--white);
       border-radius: 50%;
       padding: 5px;
-      color: $white;
+      color: var(--white);
     }
 
   }
@@ -203,7 +186,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #252423;
+  background: var(--bgDark);
   padding: 20px;
   border-radius: 10px;
   z-index: 3;
@@ -212,10 +195,10 @@ body {
   p {
     padding: .3rem .7rem;
     font-size: 1.7rem;
-    color: $white;
+    color: var(--white);
 
     a {
-      color: $primary;
+      color: var(--primary);
       text-decoration: none;
       font-weight: 700;
       font-size: 1.2rem;
@@ -223,7 +206,7 @@ body {
   }
 
   .splitter {
-    background-color: #4e4e4d;
+    background-color: var(--bg);
     border-radius: .5rem;
     color: wheat;
     margin: .3rem 0;
@@ -276,8 +259,8 @@ body {
   bottom: 3px;
   right: 3px;
   border-radius: 23px;
-  background-color: $primary;
-  box-shadow: 0 0 16px $secondary;
+  background-color: var(--primary);
+  box-shadow: 0 0 16px var(--secondary);
   -webkit-transition: all .2s .1s, right .1s;
   transition: all .2s .1s, right .1s;
 }
@@ -302,7 +285,7 @@ body {
 }
 
 .toggle-on .toggle-text-on {
-  color: $white;
+  color: var(--white);
   -webkit-transition: color .3s .15s;
   transition: color .3s .15s;
 }
@@ -346,4 +329,43 @@ body {
   opacity: 1;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
+}
+
+.settingsIcon {
+
+  position: fixed;
+  right: 1.5rem;
+  top: 1.5rem;
+  z-index: 4;
+
+  i {
+    font-size: 1.7rem;
+    color: var(--white);
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  #settingsDiv {
+    width: 90%;
+  }
+
+  .settingsIcon {
+    right: .5rem;
+    top: .5rem;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  #myDiv {
+    padding: 25px 10px 0;
+    height: 16rem;
+  }
+
+  #list {
+    margin-top: 16rem;
+  }
 }

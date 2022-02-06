@@ -25,6 +25,6 @@ contextBridge.exposeInMainWorld("fsApi", {
     return readFileSync(__dirname + "../../../database/settings.json", "utf8")
   },
   writeSettings: (text: string): void => {
-    writeFileSync(__dirname + "../../../database/settungs.json", text, "utf8")
-  }
+    writeFileSync(__dirname + "../../../database/settings.json", text, "utf8")
+  },
 })
