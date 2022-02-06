@@ -5,24 +5,70 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casandra</title>
+  <title>Cassandra</title>
   <script src="https://kit.fontawesome.com/c9687a7a14.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../styles/style.css">
-  <script defer src="../dist/renderer/lepik.js"></script>
+  <script defer src="../dist/renderer/modules/lepik.js"></script>
+  <script defer src="../dist/renderer/modules/fs.js"></script>
   <script defer src="../dist/renderer/main.js"></script>
   <script defer src="../dist/renderer/dom.js"></script>
 </head>
 
 <body>
-  <div id="myDIV" class="header">
-    <h1 style="margin:5px">Casandra</h1>
-    <h4 style="margin:5px" class="helperText">Casandra</h4>
-    <input type="text" id="keyInp" placeholder="Key...">
-    <input type="text" id="valInp" placeholder="Value...">
+  <div id="myDiv" class="header">
+    <div id=" "></div>
+    <div class="settingsIcon">
+      <i class="fa fa-bars" aria-hidden="true" id="settings" onclick="openSettings()"></i>
+    </div>
+    <h1>Cassandra</h1>
+    <h5 class="helperText"></h5>
+    <div class="form__group field">
+      <input type="input" class="form__field " placeholder="Key..." name="key" id='key' />
+      <label for="key" class="form__label">Key</label>
+    </div>
+    <div class="form__group field">
+      <input type="input" class="form__field" placeholder="Value" name="value" id='value' />
+      <label for="value" class="form__label">Value</label>
+    </div>
   </div>
   <ul id="list">
   </ul>
-
+  <div id="settingsDiv">
+    <div class="logo">
+    </div>
+    <div class="splitter">
+      <p>Preferences</p>
+    </div>
+    <div class="row">
+      <p>Dark theme:
+      <div class='toggle' id='switch' onclick="toggleClass(this)">
+        <div class='toggle-text-off'>OFF</div>
+        <div class='glow-comp'></div>
+        <div class='toggle-button'></div>
+        <div class='toggle-text-on'>ON</div>
+      </div>
+      </p>
+    </div>
+    <div class="splitter">
+      <p>Content</p>
+    </div>
+    <p>Submit Hotkey: <span class="submitHotkeySpan">Space</span></p>
+    <div class="row">
+      <p>Safe mode:
+      <div class='toggle' id='switch' onclick="toggleClass(this)">
+        <div class='toggle-text-off'>OFF</div>
+        <div class='glow-comp'></div>
+        <div class='toggle-button'></div>
+        <div class='toggle-text-on'>ON</div>
+      </div>
+      </p>
+    </div>
+    <div class="splitter">
+      <p>Links</p>
+    </div>
+    <p>Guides: <a href="https://cassandra.netlify.app/docs" class="webSpan">Docs</a></p>
+    <p>Website: <a href="https://cassandra.netlify.app/" class="webSpan">Cassandra</a></p>
+  </div>
 </body>
 
 </html>

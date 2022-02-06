@@ -1,5 +1,5 @@
 {
-  "name": "casandra",
+  "name": "cassandra",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/borecjeborec1/Casandra.git"
+    "url": "git+https://github.com/borecjeborec1/Cassandra.git"
   },
   "author": "borecjeborec1",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/borecjeborec1/Casandra/issues"
+    "url": "https://github.com/borecjeborec1/Cassandra/issues"
   },
-  "homepage": "https://github.com/borecjeborec1/Casandra#readme",
+  "homepage": "https://github.com/borecjeborec1/Cassandra#readme",
   "devDependencies": {
     "concurrently": "^7.0.0",
     "electron": "16.0.8",

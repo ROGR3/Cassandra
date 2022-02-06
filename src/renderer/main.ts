@@ -7,18 +7,32 @@ let clickedKeys: string = ""
 
 lepik.keyRelease((e: string) => {
   if (e == SUBMIT_KEY) {
-    submit()
+    return submit()
   }
-  clickedKeys = e == "space" ? "" : clickedKeys + e;
+  switch (e) {
+    case "backspace":
+      clickedKeys = clickedKeys.slice(0, -1)
+      break
+    case "space":
+    case "tab":
+    case "ctrl":
+      clickedKeys = ""
+      break
+    case "shift":
+    case "alt":
+      break
+    default:
+      clickedKeys += e
+      break
+  }
+  console.log(clickedKeys)
 })
 function submit(): void {
-  console.log(shortcuts)
   for (let sc in shortcuts) {
-    if (clickedKeys == (sc)) {
+    if (clickedKeys.includes(sc)) {
       clickedKeys = ""
       lepik.replaceWord(shortcuts[sc])
     }
   }
-  console.log(clickedKeys + " clicked")
   clickedKeys = ""
 }
