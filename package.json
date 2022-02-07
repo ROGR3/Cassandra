@@ -16,8 +16,8 @@
     "build:tsc": "tsc",
     "start": "npm run build:tsc && electron .",
     "dev": "concurrently \"tsc -w\" \"electron .\"",
-    "build:dir": "electron-builder --dir",
-    "buid:dist": "electron-builder"
+    "pack": "electron-builder --dir",
+    "build": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
   "devDependencies": {
     "concurrently": "^7.0.0",
     "electron": "16.0.8",
+    "electron-builder": "^22.14.13",
     "electron-reload": "^2.0.0-alpha.1",
     "typescript": "^4.5.5"
   },
@@ -42,7 +43,10 @@
     "appId": "Cassandra",
     "win": {
       "target": "nsis",
-      "icon": "./assets/icons/orchidei.png"
+      "icon": "./assets/logo.png"
+    },
+    "directories": {
+      "output": "./out"
     }
   }
 }
