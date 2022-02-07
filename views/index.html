@@ -21,26 +21,26 @@
   </div>
   <div class="draggable" id="mydivheader">
     <div class="draggablePart"></div>
-    <div id="logo"></div>
-    <p id="fmText">Key Simulator</p>
-    <p id="name">Cassandra</p>
-    <div class="doingIcon" id="minimize" onclick="elec.minimize()"></div>
-    <div class="doingIcon" id="fullScreen" onclick="elec.maximize()"></div>
-    <div class="doingIcon" id="close" onclick="elec.close()"></div>
+    <div id="logo" title="logo"></div>
+    <p id="fmText" title="File Description">Key Simulator</p>
+    <p id="name" title="Title">Cassandra</p>
+    <div class="doingIcon" title="Minimize Button" id="minimize" onclick="elec.minimize()"></div>
+    <div class="doingIcon" title="Maximize Button" id="fullScreen" onclick="elec.maximize()"></div>
+    <div class="doingIcon" title="Close Button" id="close" onclick="elec.close()"></div>
   </div>
   <div id="myDiv" class="header">
     <h1>Cassandra</h1>
     <h5 class="helperText" style="opacity: 0;"></h5>
-    <div class="form__group field first">
+    <div class="form__group field first" title="Add a key, which you want to be replaced with value.">
       <input type="input" class="form__field " placeholder="Key..." name="key" id='key' />
       <label for="key" class="form__label">Key</label>
     </div>
-    <div class="form__group field">
+    <div class="form__group field" title="Add a value, which you want to replace the key.">
       <input type="input" class="form__field" placeholder="Value" name="value" id='value' />
       <label for="value" class="form__label">Value</label>
     </div>
   </div>
-  <ul id="list">
+  <ul id="list" title="Saved Shortcuts">
   </ul>
   <div id="settingsDiv" style="display: none;">
     <div class="logo">
@@ -48,7 +48,7 @@
     <div class="splitter">
       <p>Preferences</p>
     </div>
-    <div class="row">
+    <div class="row" title="Do you want dark theme?">
       <p>Dark theme:
       <div class='toggle themeSwitcher' id='switch' onclick="toggleClass(this)">
         <div class='toggle-text-off'>OFF</div>
@@ -61,9 +61,11 @@
     <div class="splitter">
       <p>Content</p>
     </div>
-    <p>Submit Hotkey: <button class="submitHotkeySpan" onclick="changeSHotkey(this)" id="submitHotkeyEl">Space</button>
+    <p title="Submit hotkey is the hotkey responsible for submiting the replace request.">Submit Hotkey: <button
+        class="submitHotkeySpan" onclick="changeSHotkey(this)" id="submitHotkeyEl">Space</button>
     </p>
-    <div class="row">
+    <div class="row"
+      title="If on, the app will catch only exactly typed keys. If key = 'hello','dhello' would not work.">
       <p>Safe mode:
       <div class='toggle safeModeSwitcher' id='switch' onclick="toggleClass(this)">
         <div class='toggle-text-off'>OFF</div>
@@ -77,8 +79,9 @@
       <div class="splitter">
         <p>Links</p>
       </div>
-      <p>Guides: <a href="https://cassandra.netlify.app/docs" class="webSpan">Docs</a></p>
-      <p>Website: <a href="https://cassandra.netlify.app/" class="webSpan">Cassandra</a></p>
+      <p title="Link to guides">Guides: <a href="https://cassandra.netlify.app/docs" class="webSpan">Docs</a></p>
+      <p title="Link to Cassandra Website">Website: <a href="https://cassandra.netlify.app/"
+          class="webSpan">Cassandra</a></p>
     </span>
 
   </div>

@@ -62,7 +62,6 @@ function generateLis(): void {
     let li = document.createElement("li");
     li.innerText = sc;
     divider % 2 == 0 ? li.style.background = evenColor : li.style.background = oddColor;
-
     li.addEventListener("click", (e) => {
       document.querySelectorAll(".hidden").forEach(e => {
         let element = <HTMLElement>e
@@ -81,6 +80,7 @@ function generateLis(): void {
 
     let showValue = document.createElement("i");
     showValue.classList.add("fa", "fa-chevron-circle-down", "wierdIcon");
+    showValue.title = "Show value";
     showValue.addEventListener("click", () => {
       document.querySelectorAll(".hidden").forEach(e => {
         let element = <HTMLElement>e
@@ -97,6 +97,7 @@ function generateLis(): void {
 
     let del = document.createElement("i");
     del.classList.add("fa", "fa-trash-o", "icon");
+    del.title = "Delete a shortcut";
     del.addEventListener("click", () => {
       delete shortcuts[sc];
       fs.writeShortcuts(JSON.stringify(shortcuts));
@@ -108,6 +109,7 @@ function generateLis(): void {
 
     let edit = document.createElement("i");
     edit.classList.add("fa", "fa-pencil", "icon");
+    edit.title = "Edit shortcut";
     edit.addEventListener("click", () => {
       keyInp.value = sc;
       valInp.value = shortcuts[sc];

@@ -1,4 +1,6 @@
 import { app, ipcMain, BrowserWindow } from 'electron';
+// import electronReload from 'electron-reload'
+// electronReload(__dirname, {})
 
 
 let mainWindow: BrowserWindow | null;
