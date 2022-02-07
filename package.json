@@ -1,13 +1,23 @@
 {
   "name": "cassandra",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cassandra Key Simulator",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "keywords": [
+    "cassandra",
+    "key",
+    "simulator",
+    "node",
+    "electron",
+    "windows"
+  ],
   "scripts": {
-    "build": "tsc",
-    "start": "npm run build && electron .",
-    "dev": "concurrently \"tsc -w\" \"electron .\""
+    "build:tsc": "tsc",
+    "start": "npm run build:tsc && electron .",
+    "dev": "concurrently \"tsc -w\" \"electron .\"",
+    "build:dir": "electron-builder --dir",
+    "buid:dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -27,5 +37,12 @@
   },
   "dependencies": {
     "lepikjs": "^1.1.6"
+  },
+  "build": {
+    "appId": "Cassandra",
+    "win": {
+      "target": "nsis",
+      "icon": "./assets/icons/orchidei.png"
+    }
   }
 }
