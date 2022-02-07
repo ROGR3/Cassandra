@@ -19,12 +19,19 @@
   <div class="settingsIcon">
     <i class="fa fa-bars" aria-hidden="true" id="settings" onclick="openSettings()"></i>
   </div>
+  <div class="draggable" id="mydivheader">
+    <div class="draggablePart"></div>
+    <div id="logo"></div>
+    <p id="fmText">Key Simulator</p>
+    <p id="name">Cassandra</p>
+    <div class="doingIcon" id="minimize" onclick="elec.minimize()"></div>
+    <div class="doingIcon" id="fullScreen" onclick="elec.maximize()"></div>
+    <div class="doingIcon" id="close" onclick="elec.close()"></div>
+  </div>
   <div id="myDiv" class="header">
-    <div id=" "></div>
-
     <h1>Cassandra</h1>
     <h5 class="helperText" style="opacity: 0;"></h5>
-    <div class="form__group field">
+    <div class="form__group field first">
       <input type="input" class="form__field " placeholder="Key..." name="key" id='key' />
       <label for="key" class="form__label">Key</label>
     </div>
@@ -54,7 +61,8 @@
     <div class="splitter">
       <p>Content</p>
     </div>
-    <p>Submit Hotkey: <span class="submitHotkeySpan">Space</span></p>
+    <p>Submit Hotkey: <button class="submitHotkeySpan" onclick="changeSHotkey(this)" id="submitHotkeyEl">Space</button>
+    </p>
     <div class="row">
       <p>Safe mode:
       <div class='toggle safeModeSwitcher' id='switch' onclick="toggleClass(this)">
@@ -65,11 +73,14 @@
       </div>
       </p>
     </div>
-    <div class="splitter">
-      <p>Links</p>
-    </div>
-    <p>Guides: <a href="https://cassandra.netlify.app/docs" class="webSpan">Docs</a></p>
-    <p>Website: <a href="https://cassandra.netlify.app/" class="webSpan">Cassandra</a></p>
+    <span id="notNeeded">
+      <div class="splitter">
+        <p>Links</p>
+      </div>
+      <p>Guides: <a href="https://cassandra.netlify.app/docs" class="webSpan">Docs</a></p>
+      <p>Website: <a href="https://cassandra.netlify.app/" class="webSpan">Cassandra</a></p>
+    </span>
+
   </div>
 </body>
 

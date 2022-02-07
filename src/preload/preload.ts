@@ -28,3 +28,17 @@ contextBridge.exposeInMainWorld("fsApi", {
     writeFileSync(__dirname + "../../../database/settings.json", text, "utf8")
   },
 })
+contextBridge.exposeInMainWorld("elec", {
+  close: (): void => {
+    console.log("closing")
+    ipcRenderer.send("close")
+  },
+  minimize: (): void => {
+    console.log("minimize")
+    ipcRenderer.send("minimize")
+  },
+  maximize: (): void => {
+    console.log("maximize")
+    ipcRenderer.send("maximize")
+  },
+})

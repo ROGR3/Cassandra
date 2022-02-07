@@ -1,14 +1,15 @@
 const settings = JSON.parse(fs.readSettings())
 const shortcuts = JSON.parse(fs.readShortcuts())
 
-const SUBMIT_KEY = settings.submitKey
 
 let clickedKeys: string = ""
 
+let isChanging: boolean = false
+
 lepik.keyRelease((e: string) => {
-  if (e == SUBMIT_KEY) {
-    return submit()
-  }
+  if (isChanging) return handleSBChange(e)
+  if (e == settings.submitKey) return submit()
+
   switch (e) {
     case "backspace":
       clickedKeys = clickedKeys.slice(0, -1)
@@ -29,10 +30,26 @@ lepik.keyRelease((e: string) => {
 })
 function submit(): void {
   for (let sc in shortcuts) {
-    if (clickedKeys.includes(sc)) {
+    if (settings.safeMode) {
+      if (clickedKeys != (sc)) return
+      clickedKeys = ""
+      lepik.replaceWord(shortcuts[sc])
+    } else {
+      if (!clickedKeys.includes(sc)) return
       clickedKeys = ""
       lepik.replaceWord(shortcuts[sc])
     }
   }
   clickedKeys = ""
+}
+
+
+function handleSBChange(key: string) {
+  settings.submitKey = key
+  fs.writeSettings(JSON.stringify(settings))
+  isChanging = false
+  let submitHotkeyEl = <HTMLButtonElement>document.querySelector("#submitHotkeyEl")
+  submitHotkeyEl.innerText = key
+  submitHotkeyEl.style.width = ""
+  submitHotkeyEl.style.height = ""
 }

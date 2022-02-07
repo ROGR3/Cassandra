@@ -11,6 +11,7 @@ function createWindow(): void {
     width: 800,
     height: 600,
     icon: __dirname + '/../assets/logo.png',
+    titleBarStyle: 'hidden',
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: false,
@@ -32,4 +33,15 @@ app.on('window-all-closed', function () {
 });
 app.on("ready", () => {
   createWindow()
+})
+
+ipcMain.on('close', () => {
+  app.quit()
+})
+ipcMain.on('minimize', () => {
+  mainWindow?.minimize()
+})
+
+ipcMain.on('maximize', () => {
+  mainWindow?.isMaximized() ? mainWindow?.unmaximize() : mainWindow?.maximize()
 })

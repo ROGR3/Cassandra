@@ -13,7 +13,7 @@ document.addEventListener("keypress", (e): string => {
   helperText.style.opacity = "1"
   if (e.key.toLowerCase() == "enter") {
     if (keyInp.value.length == 0 || valInp.value.length == 0) return helperText.innerText = "You need to fill in both fields!";
-    if (shortcuts[keyInp.value]) return helperText.innerText = "This key already exists, please remove it first!";
+    if (shortcuts[keyInp.value]) return helperText.innerText = "This key already exists!";
     shortcuts[keyInp.value] = valInp.value;
     helperText.innerText = "Saved!";
     setTimeout(() => helperText.style.opacity = "0", 3000);
@@ -23,7 +23,7 @@ document.addEventListener("keypress", (e): string => {
     valInp.value = "";
   }
   if (keyInp.value.length == 0 || valInp.value.length == 0) return helperText.style.opacity = "0";
-  if (shortcuts[keyInp.value]) return helperText.innerText = "This key already exists, please remove it first!";
+  if (shortcuts[keyInp.value]) return helperText.innerText = "This key already exists!";
   return helperText.innerText = "Hit Enter to save!"
 
 })
@@ -34,11 +34,13 @@ function openSettings(): void {
     inputs[0].style.opacity = "0";
     inputs[1].style.opacity = "0";
     list.style.opacity = "0";
+    document.getElementById("settings")?.classList.add("fa-close");
   } else {
     settingsDiv.style.display = "none";
     inputs[0].style.opacity = "1";
     inputs[1].style.opacity = "1";
     list.style.opacity = "1";
+    document.getElementById("settings")?.classList.remove("fa-close");
   }
   document.querySelectorAll(".hidden").forEach(e => {
     let element = <HTMLElement>e
@@ -192,3 +194,13 @@ const THEMES: { [key: string]: any } = {
     "bgDark": "#fff"
   }
 }
+
+function changeSHotkey(el: HTMLButtonElement): void {
+  isChanging = true;
+  el.style.width = "100%";
+  el.style.height = "2rem";
+  el.innerText = ""
+  el.blur()
+}
+
+

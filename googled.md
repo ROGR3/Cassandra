@@ -32,3 +32,23 @@
     autoHideMenuBar: true,
   })
 ```
+
+*Error message "error:0308010C:digital envelope routines::unsupported"*
+> Try to uninstall Node.js version 17+ and reinstall the Node.js version 16+
+> Or set ```set NODE_OPTIONS=--openssl-legacy-provider```
+
+*Open window in browser from electron*
+```HTML
+  <base target="_blank">
+```
+```javascript
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('electron').shell.openExternal(url);
+  });
+```
+
+*How do you clear the focus in javascript?*
+```Javascript
+  .blur();
+```
