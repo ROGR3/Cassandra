@@ -52,3 +52,30 @@
 ```Javascript
   .blur();
 ```
+
+*Electron: How to minimize a window from backend*
+```Javascript
+  // preload.js
+  ipcRenderer.send('minimize')
+
+  // main.js
+  ipcMain.on('minimize', () => {
+    win.isMinimized() ? win.restore() : win.minimize()
+  })
+```
+
+*Electron builder - GitHub Personal Access Token is not set, neither programmatically, nor using env "GH_TOKEN"*
+> It's random, just run the command again.
+
+*HTMl tooltip*
+```HTML
+<div title="This is div for Header">Header</div>
+```
+
+*Change SCSS variables from JS*
+> Not Possible
+
+*Change Css variables from JS*
+```Javascript
+  document.querySelector(':root').style.setProperty('--blue', 'lightblue')
+```
