@@ -16,7 +16,8 @@ function createWindow(): void {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: __dirname + '/preload/preload.js'
+      preload: __dirname + '/preload/preload.js',
+      // devTools: false,
     }
   })
   mainWindow.loadFile('./views/index.html')

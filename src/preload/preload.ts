@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld("lepikApi", {
   },
   replaceWord: (text: string): void => {
     lepik.keyTap("ctrl+backspace")
-    lepik.write(text, 0)
+    lepik.keyTap(text)
   },
 
 });

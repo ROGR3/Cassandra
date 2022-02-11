@@ -14,7 +14,7 @@ document.addEventListener("keypress", (e): string => {
   if (e.key.toLowerCase() == "enter") {
     if (keyInp.value.length == 0 || valInp.value.length == 0) return helperText.innerText = "You need to fill in both fields!";
     if (shortcuts[keyInp.value]) return helperText.innerText = "This key already exists!";
-    shortcuts[keyInp.value] = valInp.value;
+    shortcuts[keyInp.value.replace(/ /g, "")] = valInp.value.replace(/ /g, "");
     helperText.innerText = "Saved!";
     setTimeout(() => helperText.style.opacity = "0", 3000);
     fs.writeShortcuts(JSON.stringify(shortcuts));
