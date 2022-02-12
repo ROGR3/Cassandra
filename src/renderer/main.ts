@@ -17,7 +17,7 @@ let clickedKeys: string = ""
 
 let isChanging: boolean = false
 
-lepik.keyRelease((e: string) => {
+lepik.keyPress((e: string) => {
   if (isChanging) return handleSBChange(e)
   if (e == settings.submitKey) return submit(clickedKeys)
   switch (e) {

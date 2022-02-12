@@ -2,8 +2,8 @@ import { ipcRenderer, contextBridge } from "electron";
 import { readFileSync, writeFileSync } from "fs";
 const lepik = require("lepikjs")
 contextBridge.exposeInMainWorld("lepikApi", {
-  keyRelease: (cb: Function): void => {
-    lepik.on("keyRelease", cb)
+  keyPress: (cb: Function): void => {
+    lepik.on("keyPress", cb)
   },
   keyTap: (key: string): void => {
     lepik.keyTap(key)

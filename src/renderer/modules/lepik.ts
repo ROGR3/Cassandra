@@ -1,6 +1,6 @@
 interface Lepik {
   keyTap: (key: string) => void
-  keyRelease: (cb: Function) => void
+  keyPress: (cb: Function) => void
   replaceWord: (text: string) => void
 
 }
@@ -8,7 +8,7 @@ interface Lepik {
 const lepik: Lepik = {
   replaceWord,
   keyTap,
-  keyRelease,
+  keyPress,
 }
 
 
@@ -22,7 +22,7 @@ function keyTap(key: string): void {
   window.lepikApi.keyTap(key)
 }
 
-function keyRelease(cb: Function): void {
+function keyPress(cb: Function): void {
   //@ts-expect-error
-  window.lepikApi.keyRelease(cb)
+  window.lepikApi.keyPress(cb)
 }
