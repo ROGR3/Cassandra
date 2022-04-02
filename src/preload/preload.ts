@@ -5,12 +5,13 @@ contextBridge.exposeInMainWorld("lepikApi", {
   keyPress: (cb: Function): void => {
     lepik.on("keyPress", cb)
   },
-  keyTap: (key: string): void => {
-    lepik.keyTap(key)
-  },
+
   replaceWord: (text: string): void => {
     lepik.keyTap("ctrl+backspace")
-    lepik.keyTap(text)
+    if (text.startsWith("*"))
+      lepik.keyTap(text.substring(1))
+    else
+      lepik.write(text, 0)
   },
 
 });

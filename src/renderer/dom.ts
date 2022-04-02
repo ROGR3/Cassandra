@@ -13,8 +13,11 @@ document.addEventListener("keypress", (e): string => {
   helperText.style.opacity = "1"
   if (e.key.toLowerCase() == "enter") {
     if (keyInp.value.length == 0 || valInp.value.length == 0) return helperText.innerText = "You need to fill in both fields!";
-    if (shortcuts[keyInp.value]) return helperText.innerText = "This key already exists!";
-    shortcuts[keyInp.value.replace(/ /g, "")] = valInp.value.replace(/ /g, "");
+    if (shortcuts[keyInp.value]) return helperText.innerText = "This key already exists!";;
+    for (let i = 0; i < valInp.value.length; i++) {
+      if (valInp.value[i] == "\r") console.log("found newline")
+    }
+    shortcuts[keyInp.value.replace(/ /g, "\ ")] = valInp.value.replace(/ /g, "\ ");
     helperText.innerText = "Saved!";
     setTimeout(() => helperText.style.opacity = "0", 3000);
     fs.writeShortcuts(JSON.stringify(shortcuts));
