@@ -244,6 +244,14 @@ body {
   transition: .2s;
   margin-top: 19rem;
 
+  .hidden {
+    line-height: 1.2;
+    overflow-y: scroll;
+    max-height: 12rem;
+    font-style: italic;
+    font-size: 1.6rem;
+  }
+
   li {
     padding: 2px 20px 2px 40px;
     list-style-type: none;

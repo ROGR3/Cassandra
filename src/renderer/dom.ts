@@ -55,7 +55,11 @@ function generateLis(): void {
   for (let sc in shortcuts) {
     divider++
     let liHidden = document.createElement("li");
-    liHidden.innerText = " > " + shortcuts[sc];
+    let liText = ""
+    shortcuts[sc].split("\\n").forEach(e => {
+      liText += "ㅤ" + e.trim() + "\n"
+    })
+    liHidden.innerText = liText
     liHidden.style.display = "none";
     liHidden.classList.add("hidden")
     divider % 2 == 0 ? liHidden.style.background = evenColor : liHidden.style.background = oddColor;

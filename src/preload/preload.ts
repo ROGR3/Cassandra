@@ -11,7 +11,7 @@ contextBridge.exposeInMainWorld("lepikApi", {
     if (text.startsWith("*"))
       lepik.keyTap(text.substring(1))
     else
-      lepik.write(text, 0)
+      lepik.write(text, 0.000001)
   },
 
 });
